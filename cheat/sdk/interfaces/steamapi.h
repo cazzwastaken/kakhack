@@ -1,0 +1,56 @@
+#pragma once
+
+class SteamClient;
+class SteamUser;
+class SteamGameServer;
+class SteamFriends;
+class SteamUtils;
+class SteamMatchmaking;
+class SteamGameSearch;
+class SteamContentServer;
+class SteamMatchmakingServers;
+class SteamUserStats;
+class SteamApps;
+class SteamNetworking;
+class SteamRemoteStorage;
+class SteamScreenshots;
+class SteamMusic;
+class SteamMusicRemote;
+class SteamGameServerStats;
+class SteamHTTP;
+class SteamUnifiedMessages;
+class SteamController;
+class SteamUGC;
+class SteamAppList;
+class SteamHTMLSurface;
+class SteamInventory;
+class SteamVideo;
+class SteamParentalSettings;
+class SteamInput;
+
+struct SteamAPIContext
+{
+	SteamClient* steamClient;
+	SteamUser* steamUser;
+	SteamFriends* steamFriends;
+	SteamUtils* steamUtils;
+	SteamMatchmaking* steamMatchmaking;
+	SteamGameSearch* steamGameSearch;
+	SteamMatchmakingServers* steamMatchmakingServers;
+	SteamUserStats* steamUserStats;
+	SteamApps* steamApps;
+	SteamNetworking* steamNetworking;
+	SteamRemoteStorage* steamRemoteStorage;
+	SteamScreenshots* steamScreenshots;
+	SteamHTTP* steamHTTP;
+	SteamController* pController;
+	SteamUGC* steamUGC;
+	SteamAppList* steamAppLSt;
+	SteamMusic* steamMusic;
+	SteamMusicRemote* steamMusicRemote;
+	SteamHTMLSurface* steamHTMLSurface;
+	SteamInventory* steamInventory;
+	SteamVideo* steamVideo;
+	SteamParentalSettings* steamParentalSettings;
+	SteamInput* steamInput;
+};

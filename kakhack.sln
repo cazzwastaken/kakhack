@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31521.260
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kakhack", "kakhack.vcxproj", "{BADD49D7-9537-4191-B349-91ED4B122CB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BADD49D7-9537-4191-B349-91ED4B122CB2}.Debug|x64.ActiveCfg = Debug|x64
+		{BADD49D7-9537-4191-B349-91ED4B122CB2}.Debug|x64.Build.0 = Debug|x64
+		{BADD49D7-9537-4191-B349-91ED4B122CB2}.Debug|x86.ActiveCfg = Debug|Win32
+		{BADD49D7-9537-4191-B349-91ED4B122CB2}.Debug|x86.Build.0 = Debug|Win32
+		{BADD49D7-9537-4191-B349-91ED4B122CB2}.Release|x64.ActiveCfg = Release|x64
+		{BADD49D7-9537-4191-B349-91ED4B122CB2}.Release|x64.Build.0 = Release|x64
+		{BADD49D7-9537-4191-B349-91ED4B122CB2}.Release|x86.ActiveCfg = Release|Win32
+		{BADD49D7-9537-4191-B349-91ED4B122CB2}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1AA9208A-760A-4F05-A5A3-C71D4DA4E6E9}
+	EndGlobalSection
+EndGlobal
