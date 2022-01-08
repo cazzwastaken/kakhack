@@ -74,15 +74,15 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)output\</OutDir>
     <IntDir>$(SolutionDir)output\intermediates\</IntDir>
-    <IncludePath>D:\Coding\kakhack\external\freetype\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Coding\kakhack\external\freetype\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)external\freetype\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)external\freetype\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)output\</OutDir>
     <IntDir>$(SolutionDir)output\intermediates\</IntDir>
-    <IncludePath>D:\Coding\kakhack\external\freetype\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Coding\kakhack\external\freetype\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)external\freetype\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)external\freetype\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
