@@ -3,16 +3,20 @@
 
 #include "core/hooks.h"
 
-#define MESSAGE(message) MessageBeep(MB_ICONSTOP); MessageBoxA(NULL, message, "kakhack", MB_OK | MB_ICONERROR)
-
 // Setup Tree
 /*
-* Memory [p]
+* Memory [p] -> find patterns
 * Interfaces [i] -> Uses patterns from memory namespace
 * Netvars [n] -> Uses interfaces
 * User Interface [u] -> Uses interfaces
 * Hooks [h] -> Uses interfaces & user interface & netvars
 */
+
+void Message(const char* error)
+{
+	MessageBeep(MB_ICONSTOP);
+	MessageBoxA(NULL, error, "kakhack", MB_OK | MB_ICONERROR);
+}
 
 void Initialize(HMODULE module)
 {
@@ -27,7 +31,7 @@ void Initialize(HMODULE module)
 	}
 	catch (const std::exception& e)
 	{
-		MESSAGE(e.what());
+		Message(e.what());
 		FreeLibraryAndExitThread(module, EXIT_FAILURE);
 	}
 
@@ -47,7 +51,9 @@ void Initialize(HMODULE module)
 		g::events.Destroy();
 		u::Destroy();
 		h::Destroy();
-		MESSAGE(e.what());
+
+		Message(e.what());
+
 		FreeLibraryAndExitThread(module, EXIT_FAILURE);
 	}
 
@@ -64,12 +70,14 @@ void Initialize(HMODULE module)
 //#endif
 }
 
+// entry point
 BOOL WINAPI DllMain(HINSTANCE instance, DWORD reason, LPVOID previous)
 {
 	if (reason == DLL_PROCESS_ATTACH)
 	{
 		DisableThreadLibraryCalls(instance);
 
+		// create our init thread
 		const auto thread = CreateThread(NULL,
 			NULL,
 			reinterpret_cast<LPTHREAD_START_ROUTINE>(Initialize),

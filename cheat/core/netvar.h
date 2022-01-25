@@ -29,8 +29,8 @@ namespace n
 #define NETVAR(name, var, ...) \
 std::add_lvalue_reference_t<__VA_ARGS__> name() \
 { \
-	const auto offset = std::uintptr_t(this) + n::GetOffset(fnv::HashConst(var)); \
-	return *reinterpret_cast<std::add_pointer_t<__VA_ARGS__>>(offset); \
+	static const auto offset = n::GetOffset(fnv::HashConst(var)); \
+	return *reinterpret_cast<std::add_pointer_t<__VA_ARGS__>>(std::uintptr_t(this) + offset); \
 }
 
 #define NETPROP(name, var) \
