@@ -90,4 +90,9 @@ void i::Setup()
 
 	hud = *reinterpret_cast<Hud**>(m::sigs.hud);
 	hudChat = hud->FindElement<HudChat>("CHudChat");
+
+	keyValues = reinterpret_cast<KeyValuesSystemFn>(GetProcAddress(GetModuleHandle("vstdlib"), "KeyValuesSystem"))();
+
+	if (!keyValues)
+		throw std::runtime_error("Unable to get KeyValuesSystem pointer.");
 }

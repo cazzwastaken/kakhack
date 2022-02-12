@@ -39,6 +39,8 @@ namespace i
 	inline GlobalVarsBase* globals = nullptr;
 	inline IDirect3DDevice9* device = nullptr;
 
-	inline Hud* hud = { nullptr };
-	inline HudChat* hudChat = { nullptr };
+	inline Hud* hud = nullptr;
+	inline HudChat* hudChat = nullptr;
+
+	inline KeyValues* keyValues = nullptr;
 }

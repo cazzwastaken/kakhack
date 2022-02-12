@@ -8,6 +8,7 @@ void h::Setup()
 	// Populate entity list if already in-game
 	g::Setup();
 
+	const auto allocKeyValuesMemory = m::Get(i::keyValues, 1);
 	const auto createMove = m::Get(i::clientMode, 24);
 	const auto dispatchUserMessage = m::Get(i::client, 38);
 	const auto doPostScreenSpaceEffects = m::Get(i::clientMode, 44);
@@ -32,6 +33,9 @@ void h::Setup()
 
 	if (MH_Initialize())
 		throw std::runtime_error("Unable to initialize minhook");
+
+	if (MH_CreateHook(allocKeyValuesMemory, &AllocKeyValuesMemory, reinterpret_cast<void**>(&AllocKeyValuesMemoryOriginal)))
+		throw std::runtime_error("Unable to hook AllocKeyValuesMemory()");
 
 	if (MH_CreateHook(createMove, &CreateMove, reinterpret_cast<void**>(&CreateMoveOriginal)))
 		throw std::runtime_error("Unable to hook CreateMove()");

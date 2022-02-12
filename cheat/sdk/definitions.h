@@ -52,6 +52,8 @@ using CreateInterfaceFn = void* (__cdecl*)(const char*, int*);
 using CreateClientClassFn = ClientNetworkable * (__cdecl*)(int, int);
 using CreateEventFn = ClientNetworkable * (__cdecl*)();
 
+using KeyValuesSystemFn = KeyValues * (__cdecl*)();
+
 using RecvVarProxyFn = void(__cdecl*)(const RecvProxyData*, void*, void*);
 using ArrayLengthProxyFn = void(__cdecl*)(void*, int, int);
 using DataTableProxyFn = void(__cdecl*)(const RecvProp*, void**, void*, int);

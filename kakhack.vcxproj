@@ -342,6 +342,7 @@
     <ClInclude Include="external\minhook\trampoline.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cheat\core\functions\allockeyvaluesmemory.cpp" />
     <ClCompile Include="cheat\core\functions\dispatchusermessage.cpp" />
     <ClCompile Include="cheat\core\functions\onscreensizechanged.cpp" />
     <ClCompile Include="cheat\core\functions\sequence.cpp" />

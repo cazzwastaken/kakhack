@@ -10,6 +10,10 @@ namespace h
 	// Destroy hooks for uninjection
 	void Destroy() noexcept;
 
+	using AllocKeyValuesMemoryFn = void*(__thiscall*)(void*, int);
+	inline AllocKeyValuesMemoryFn AllocKeyValuesMemoryOriginal = { nullptr };
+	void* __stdcall AllocKeyValuesMemory(int size);
+
 	using CreateMoveFn = bool(__thiscall*)(void*, float, UserCmd*);
 	inline CreateMoveFn CreateMoveOriginal = { nullptr };
 	bool __stdcall CreateMove(float frameTime, UserCmd* cmd);

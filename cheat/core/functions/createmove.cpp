@@ -4,7 +4,7 @@ bool __stdcall h::CreateMove(float frameTime, UserCmd* cmd)
 {
 	const auto result = CreateMoveOriginal(i::clientMode, frameTime, cmd);
 
-	if (!cmd || !cmd->commandNumber)
+	if (!cmd->commandNumber)
 		return result;
 
 	if (result)

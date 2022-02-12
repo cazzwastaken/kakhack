@@ -23,6 +23,8 @@ void m::Setup()
     sigs.settingsChatText = Scan("client", "55 8B EC 56 8B F1 83 BE ? ? ? ? ? 75 4B");
     sigs.showAlert = Scan("client", "55 8B EC A1 ? ? ? ? 83 EC 08 56 8B F1 57 A8 01");
     sigs.staticPropInit = Scan("engine", "53 8B DC 83 EC 08 83 E4 F8 83 C4 04 55 8B 6B 04 89 6C 24 04 8B EC 81 EC ? ? ? ? 8B 43 08");
+    sigs.allocKeyValuesEngine = Scan("engine", "FF 52 04 85 C0 74 0C 56") + 3;
+    sigs.allocKeyValuesClient = Scan("client", "FF 52 04 85 C0 74 0C 56") + 3;
 }
 
 uint8_t* m::Scan(const char* module, const char* pattern)
@@ -40,7 +42,8 @@ uint8_t* m::Scan(const char* module, const char* pattern)
 
         for (auto current = start; current < end; ++current)
         {
-            if (*current == '?') {
+            if (*current == '?') 
+            {
                 ++current;
 
                 if (*current == '?')
@@ -68,15 +71,19 @@ uint8_t* m::Scan(const char* module, const char* pattern)
     auto s = bytes.size();
     auto d = bytes.data();
 
-    for (auto i = 0ul; i < size - s; ++i) {
+    for (auto i = 0ul; i < size - s; ++i) 
+    {
         bool found = true;
 
-        for (auto j = 0ul; j < s; ++j) {
+        for (auto j = 0ul; j < s; ++j) 
+        {
             if (scanBytes[i + j] != d[j] && d[j] != -1) {
+
                 found = false;
                 break;
             }
         }
+
         if (found)
             return &scanBytes[i];
     }
