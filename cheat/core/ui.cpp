@@ -18,9 +18,13 @@ void u::Setup()
 	}
 
 	window = creationParams.hFocusWindow;
-	WindowProcessOriginal = reinterpret_cast<WNDPROC>(SetWindowLongPtrW(window,
-		GWLP_WNDPROC,
-		reinterpret_cast<LONG_PTR>(WindowProcess)));
+	WindowProcessOriginal = reinterpret_cast<WNDPROC>(
+		SetWindowLongPtrW(
+			window,
+			GWLP_WNDPROC,
+			reinterpret_cast<LONG_PTR>(WindowProcess)
+		)
+	);
 
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
@@ -179,9 +183,11 @@ void u::Render()
 	switch (tab)
 	{
 	case 0:
+	{
 		ImGui::BeginChild(1, { }, true);
-		ImGui::EndChild();
 
+		ImGui::EndChild();
+	}
 		break;
 	case 1:
 		ImGui::BeginGroup();
@@ -278,9 +284,7 @@ void u::Render()
 		HelpMarker("Misc visuals dude");
 		ImGui::Separator();
 		MISC_COLOR_BOOL(sniperCrosshair);
-		MISC_COLOR_BOOL(hitMarker);
 		MISC_COLOR_BOOL(hitEffect);
-		MISC_COLOR_BOOL(stepEffect);
 		ImGui::EndChild();
 		ImGui::EndGroup();
 		break;

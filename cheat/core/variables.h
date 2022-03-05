@@ -43,9 +43,7 @@ namespace v
 		float worldFov = 90.f;
 
 		std::pair<bool, std::array<float, 4U>> sniperCrosshair = { false, {1.f, 0.f, 0.f, 1.f} };
-		std::pair<bool, std::array<float, 4U>> hitMarker = { false, {0.f, 0.f, 2.f, 1.f} };
 		std::pair<bool, std::array<float, 4U>> hitEffect = { false, {1.f, 0.f, 1.f, 1.f} };
-		std::pair<bool, std::array<float, 4U>> stepEffect = { false, {1.f, 0.f, 1.f, 1.f} };
 
 	};
 	inline auto misc = Misc{ };
