@@ -135,12 +135,10 @@ void Visuals::Glow()
 		if (glow.IsUnused())
 			continue;
 
-		const auto entity = glow.entity;
-
-		if (!entity || entity->IsDormant())
+		if (!glow.entity)
 			continue;
 
-		const auto clientClass = entity->GetClientClass();
+		const auto clientClass = glow.entity->GetClientClass();
 
 		if (!clientClass)
 			continue;
@@ -152,7 +150,7 @@ void Visuals::Glow()
 			if (!v::visuals.player.first)
 				break;
 
-			const auto player = static_cast<CSPlayer*>(entity);
+			const auto player = static_cast<CSPlayer*>(glow.entity);
 
 			if (player->GetTeam() == g::localPlayer->GetTeam())
 				break;
@@ -196,7 +194,7 @@ void Visuals::Glow()
 			if (!v::visuals.weapon.first)
 				break;
 
-			if (!entity->IsWeapon())
+			if (!glow.entity->IsWeapon())
 				break;
 
 			glow.SetColor(v::visuals.weapon.second.data());
@@ -214,6 +212,13 @@ bool Visuals::ColoredModel(MatRenderContext* context,
 		return false;
 
 	static auto material = i::materialSystem->FindMaterial("debug/debugambientcube");
+	static auto once = true;
+
+	if (once)
+	{
+		material->IncrementReferenceCount();
+		once = !once;
+	}
 
 	const auto name = std::string_view(info.model->name);
 
@@ -257,10 +262,10 @@ bool Visuals::ColoredModel(MatRenderContext* context,
 	{
 		const auto player = i::entity->Get<CSPlayer>(info.entityIndex);
 
-		if (!player || !player->IsPlayer())
+		if (!player)
 			return false;
 
-		if (player->IsDormant())
+		if (!player->IsPlayer())
 			return false;
 
 		if (player->GetTeam() == g::localPlayer->GetTeam())
