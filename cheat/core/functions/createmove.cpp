@@ -12,6 +12,7 @@ bool __stdcall h::CreateMove(float frameTime, UserCmd* cmd)
 
 	f::misc.RevealRanks(cmd);
 	f::misc.BunnyHop(cmd);
+	f::misc.RevealRadar();
 
 	return false;
 }
