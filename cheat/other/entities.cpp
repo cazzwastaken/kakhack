@@ -4,6 +4,9 @@
 
 void EntityListener::Setup() noexcept
 {
+	// Reserve 64 slots in playerlist
+	playerList.reserve(64);
+
 	i::entity->AddEntityListener(this);
 }
 
