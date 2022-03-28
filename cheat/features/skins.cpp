@@ -115,7 +115,7 @@ int Skins::GetNewSequence(const uint32_t hash, const int sequence)
 		SEQUENCE_FALCHION_LOOKAT01 = 12,
 		SEQUENCE_FALCHION_LOOKAT02 = 13,
 
-		SEQUENCE_CSS_LOOKAT01 = 14,
+		SEQUENCE_CSS_LOOKAT01 = 12,
 		SEQUENCE_CSS_LOOKAT02 = 15,
 
 		SEQUENCE_DAGGERS_IDLE1 = 1,
@@ -160,10 +160,11 @@ int Skins::GetNewSequence(const uint32_t hash, const int sequence)
 	}
 	case fnv::HashConst("models/weapons/v_knife_css.mdl"):
 	{
+		const int sequences[] = { SEQUENCE_CSS_LOOKAT01, SEQUENCE_CSS_LOOKAT02 };
 		switch (sequence)
 		{
 		case SEQUENCE_DEFAULT_LOOKAT01:
-			return RandomSequence(SEQUENCE_CSS_LOOKAT01, SEQUENCE_CSS_LOOKAT02);
+			return sequences[RandomSequence(0, 1)];
 		default:
 			return sequence;
 		}
