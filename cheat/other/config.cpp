@@ -78,12 +78,46 @@ void Config::Delete()
 	Refresh();
 }
 
-void Config::Load()
-{
+#define READ(j, var) v::var = j[#var];
+#define READ_ARR(j, var) std::copy(j[#var].begin(), j[#var].end(), v::space::var);
+#define WRITE(j, var) j[#var] = v::var;
+
+void Config::Load() {
+
+	if (GetSelectedName() == NULL)
+		return;
+	nlohmann::json j;
+	std::fstream read(configDir + std::string("/") + GetSelectedName());
+	read >> j;
+	read.close();
+
+	READ(j, visuals.visible.first)
+	READ(j, visuals.visible.second)
+	READ(j, visuals.hidden.first)
+
+	READ(j, visuals.hidden.second)
+	READ(j, misc.sniperCrosshair.first)
+	READ(j, misc.sniperCrosshair.second)
+
+	// etc, etc etc
 
 }
 
-void Config::Save()
-{
+void Config::Save() {
+	if (GetSelectedName() == NULL)
+		return;
+	nlohmann::json j;
 
+	WRITE(j, visuals.visible.first)
+	WRITE(j, visuals.visible.second)
+	WRITE(j, visuals.hidden.first)
+
+	WRITE(j, visuals.hidden.second)
+	WRITE(j, misc.sniperCrosshair.first)
+	WRITE(j, misc.sniperCrosshair.second)
+	// etc, etc etc
+
+	std::ofstream write(configDir + std::string("/") + GetSelectedName());
+	write << j << std::endl;
+	write.close();
 }
