@@ -94,6 +94,10 @@ namespace h
 	inline StaticPropInitFn StaticPropInitOriginal = { nullptr };
 	bool __fastcall StaticPropInit(StaticProp* thisptr, void* edx, int index, StaticPropLump& lump, Model* model);
 
+	using SendDatagramFn = int(__fastcall*)(NetChannel*, int, bf_write*);
+	inline SendDatagramFn SendDatagramOriginal = { nullptr };
+	int __fastcall SendDatagram(NetChannel* thisptr, int edx, bf_write* datagram);
+
 	// Proxies
 	inline RecvVarProxyFn SequenceOriginal = { nullptr };
 	void __cdecl Sequence(const RecvProxyData* data, void* entity, void* output);

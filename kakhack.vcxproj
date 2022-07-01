@@ -345,6 +345,7 @@
     <ClCompile Include="cheat\core\functions\allockeyvaluesmemory.cpp" />
     <ClCompile Include="cheat\core\functions\dispatchusermessage.cpp" />
     <ClCompile Include="cheat\core\functions\onscreensizechanged.cpp" />
+    <ClCompile Include="cheat\core\functions\senddatagram.cpp" />
     <ClCompile Include="cheat\core\functions\sequence.cpp" />
     <ClCompile Include="cheat\core\functions\settingschattext.cpp" />
     <ClCompile Include="cheat\core\functions\showalert.cpp" />
