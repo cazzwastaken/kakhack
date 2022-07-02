@@ -30,6 +30,7 @@ void h::Setup()
 	const auto settingsChatText = reinterpret_cast<void*>(m::sigs.settingsChatText);
 	const auto showAlert = reinterpret_cast<void*>(m::sigs.showAlert);
 	const auto staticPropInit = reinterpret_cast<void*>(m::sigs.staticPropInit);
+	const auto sendDatagram = reinterpret_cast<void*>(m::sigs.sendDatagram);
 
 	if (MH_Initialize())
 		throw std::runtime_error("Unable to initialize minhook");
@@ -96,6 +97,9 @@ void h::Setup()
 
 	if (MH_CreateHook(staticPropInit, &StaticPropInit, reinterpret_cast<void**>(&StaticPropInitOriginal)))
 		throw std::runtime_error("Unable to hook StaticPropInit()");
+
+	if (MH_CreateHook(sendDatagram, &SendDatagram, reinterpret_cast<void**>(&SendDatagramOriginal)))
+		throw std::runtime_error("Unable to hook SendDatagram()");
 
 	if (MH_EnableHook(MH_ALL_HOOKS))
 		throw std::runtime_error("Unable to enable hooks");

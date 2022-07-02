@@ -45,8 +45,9 @@ namespace m
 		uint8_t* settingsChatText = nullptr;
 		uint8_t* showAlert = nullptr;
 		uint8_t* staticPropInit = nullptr;
-		uint8_t* allocKeyValuesEngine = nullptr;
-		uint8_t* allocKeyValuesClient = nullptr;
+		uintptr_t allocKeyValuesEngine;
+		uintptr_t allocKeyValuesClient;
+		uint8_t* sendDatagram = nullptr;
 	}sigs;
 
 	// Signature scanner :)
