@@ -20,11 +20,11 @@ struct DataVariant
 {
 	union
 	{
-		float	Float;
-		long	Int;
+		float Float;
+		long Int;
 		char* String;
 		void* Data;
-		float	Vector[3];
+		float Vector[3];
 		int64_t Int64;
 	};
 
