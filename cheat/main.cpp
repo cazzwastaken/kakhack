@@ -18,7 +18,7 @@ void Message(const char* error)
 	MessageBoxA(NULL, error, "kakhack", MB_OK | MB_ICONERROR);
 }
 
-void Initialize(HMODULE module)
+DWORD WINAPI Initialize(LPVOID moduleInstance)
 {
 	while (!GetModuleHandle("serverbrowser"))
 		std::this_thread::sleep_for(std::chrono::milliseconds(200));
@@ -32,7 +32,8 @@ void Initialize(HMODULE module)
 	catch (const std::exception& e)
 	{
 		Message(e.what());
-		FreeLibraryAndExitThread(module, EXIT_FAILURE);
+		FreeLibraryAndExitThread(static_cast<HMODULE>(moduleInstance), EXIT_FAILURE);
+		return 0ul;
 	}
 
 	g::config.Setup();
@@ -54,7 +55,8 @@ void Initialize(HMODULE module)
 
 		Message(e.what());
 
-		FreeLibraryAndExitThread(module, EXIT_FAILURE);
+		FreeLibraryAndExitThread(static_cast<HMODULE>(moduleInstance), EXIT_FAILURE);
+		return 0ul;
 	}
 
 //#ifdef _DEBUG
@@ -66,7 +68,8 @@ void Initialize(HMODULE module)
 	g::events.Destroy();
 	g::entities.Destroy();
 
-	FreeLibraryAndExitThread(module, EXIT_SUCCESS);
+	FreeLibraryAndExitThread(static_cast<HMODULE>(moduleInstance), EXIT_FAILURE);
+	return 0ul;
 //#endif
 }
 
@@ -80,7 +83,7 @@ BOOL WINAPI DllMain(HINSTANCE instance, DWORD reason, LPVOID previous)
 		// create our init thread
 		const auto thread = CreateThread(NULL,
 			NULL,
-			reinterpret_cast<LPTHREAD_START_ROUTINE>(Initialize),
+			Initialize,
 			instance,
 			NULL,
 			nullptr);
