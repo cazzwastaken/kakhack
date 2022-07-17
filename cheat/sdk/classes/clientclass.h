@@ -297,11 +297,11 @@ public:
 		return networkName;
 	}
 
-	CreateClientClassFn CreateClientClass;
-	CreateEventFn CreateEvent;
+	CreateClientClassFn CreateClientClassFunc;
+	CreateEventFn CreateEventFunc;
 	char* networkName;
 	RecvTable* recvTable;
 	ClientClass* next;
 	ClassIndex classID;
-	const char* mapClassname;
+	const char* mapClassName;
 };
