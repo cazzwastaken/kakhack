@@ -7,9 +7,9 @@
 #include <format>
 
 template <typename T>
-T* i::Get(const char* module, const std::string_view& version)
+static T* Get(const char* module, std::string_view version)
 {
-	const auto handle = GetModuleHandleA(module);
+	const auto handle = GetModuleHandle(module);
 
 	if (!handle)
 	{
@@ -91,8 +91,17 @@ void i::Setup()
 	hud = *reinterpret_cast<Hud**>(m::sigs.hud);
 	hudChat = hud->FindElement<HudChat>("CHudChat");
 
-	keyValues = reinterpret_cast<KeyValuesSystemFn>(GetProcAddress(GetModuleHandle("vstdlib"), "KeyValuesSystem"))();
+	const auto vstdlib = GetModuleHandle("vstdlib");
+
+	if (!vstdlib)
+	{
+		throw std::runtime_error("Unable to get handle to vstdlib.dll.");
+	}
+
+	keyValues = reinterpret_cast<KeyValuesSystemFn>(GetProcAddress(vstdlib, "KeyValuesSystem"))();
 
 	if (!keyValues)
+	{
 		throw std::runtime_error("Unable to get KeyValuesSystem pointer.");
+	}
 }

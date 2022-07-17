@@ -9,9 +9,6 @@
 struct IDirect3DDevice9;
 namespace i
 {
-	template <typename T>
-	T* Get(const char* module, const std::string_view& version);
-
 	void Setup();
 
 	inline BaseClientDll* client = nullptr;
