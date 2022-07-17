@@ -212,9 +212,8 @@ bool Visuals::ColoredModel(MatRenderContext* context,
 		return false;
 
 	static auto material = i::materialSystem->FindMaterial("debug/debugambientcube");
-	static auto once = true;
 
-	if (once)
+	if (static auto once = true; once)
 	{
 		material->IncrementReferenceCount();
 		once = !once;
