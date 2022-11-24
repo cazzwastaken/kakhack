@@ -3,7 +3,7 @@ This is an internal project I was working on about a year ago. The features are 
 
 ## ☂️ Features
 - Decent ImGui menu with FreeType font rendering
-- 80% complete .json config system
+- Complete .json config system
 - Lots of visuals
 - Basic misc features
 - Decently clean code (don't roast me)
