@@ -25,7 +25,7 @@ void m::Setup()
     sigs.staticPropInit = Scan("engine", "53 8B DC 83 EC 08 83 E4 F8 83 C4 04 55 8B 6B 04 89 6C 24 04 8B EC 81 EC ? ? ? ? 8B 43 08");
     sigs.allocKeyValuesEngine = RelativeToAbsolute(reinterpret_cast<std::uintptr_t>(Scan("engine", "E8 ? ? ? ? 83 C4 08 84 C0 75 10 FF 75 0C")) + 1) + 74;
     sigs.allocKeyValuesClient = RelativeToAbsolute(reinterpret_cast<std::uintptr_t>(Scan("client", "E8 ? ? ? ? 83 C4 08 84 C0 75 10")) + 1) + 62;
-    sigs.sendDatagram = Scan("engine", "55 8B EC 83 E4 F0 B8 ? ? ? ? E8 ? ? ? ? 56 57 8B F9 89 7C 24 18");
+    sigs.sendDatagram = Scan("engine", "55 8B EC 83 E4 F0 B8 ? ? ? ? E8 ? ? ? ? 56 57 8B F9 89 7C 24 14");
 }
 
 uint8_t* m::Scan(const char* module, const char* pattern)
