@@ -340,6 +340,7 @@
     <ClInclude Include="external\minhook\hde\table64.h" />
     <ClInclude Include="external\minhook\minhook.h" />
     <ClInclude Include="external\minhook\trampoline.h" />
+    <ClInclude Include="external\x86retspoof\x86RetSpoof.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cheat\core\functions\allockeyvaluesmemory.cpp" />

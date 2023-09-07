@@ -576,6 +576,9 @@
     <ClInclude Include="cheat\other\render.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="external\x86retspoof\x86RetSpoof.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external\imgui\imgui.cpp">
